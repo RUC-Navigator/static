@@ -1,0 +1,47 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+
+#footer {
+	text-align: center;
+	color: white;
+	/* Set the fixed height of the footer here */
+	height: 150px;
+	background-color: black;
+}
+
+.micText {
+  font-size: 18px;
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+
+.microphone {
+    width: 100%;
+}
+.micButton {
+    background: url('../images/microphone.png') no-repeat;
+    width: 100px;
+    height: 100px;
+    margin: 0px auto;
+	margin-top: 10px;
+    cursor: pointer;
+}
+.micButton.recording {
+    background: url('../images/microphone_running.svg') no-repeat;
+}
+.micButton.recording:hover {
+    background: url('../images/microphone_running.svg') no-repeat;
+}
+.micButton-preload {
+    display: none;
+}
+.micButton-preload, .micButton:hover {
+    background: url('../images/microphone_hover.svg') no-repeat;
+}
+.micButton:hover .micText {
+    text-decoration: underline;
+}
+.micButton:active {
+    background: url('../images/microphone_running.svg') no-repeat;
+}

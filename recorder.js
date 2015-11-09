@@ -91,17 +91,24 @@ function stopRecord() {
 
 
 	var li = document.createElement('li');
-	var au = document.createElement('audio');
+	//var au = document.createElement('a');
+	var bu = document.createElement('button');
 	var hf = document.createElement('a');
 
     uploadAudio(blob, filename, $(li));
 
-	au.controls = true;
-	au.src = url;
+	//au.controls = true;
+	//au.src = url;
+	bu.className= "btn btn-warning playSound";
+	bu.innerHTML ="playSound";
+	bu.onclick = function() {
+			createjs.Sound.play('uploads/' + filename);
+		};
+	var soundID = filename;
 	hf.href = url;
 	hf.download = filename;
 	hf.innerHTML = "download wav file";
-	li.appendChild(au);
+	li.appendChild(bu);
 	li.appendChild(hf);
 	recordingslist.appendChild(li);
     $(li).addClass('li-send pull-left');
@@ -133,12 +140,16 @@ function uploadAudio(wavData, filename, $li){
                             if (res.status === 0) {
                                 clearInterval(itv);
 								$('<span> ' + res.pre.split('$')[2] + '</span>').appendTo($li);
+								createjs.Sound.registerSound(window.location.href + 'uploads/' + filename, 'uploads/' + filename);
                                 var $newli = $('<li class="li-reply pull-right"></li>');
                                 $newli.insertAfter($li);
-                                var audio = document.createElement("audio");
-                                audio.src = res.path;
-                                $(audio).appendTo($newli);
-                                $('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
+                                //var audio = document.createElement("audio");
+                                //audio.src = res.path;
+                                //$(audio).appendTo($newli);
+                                //$('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
+									var soundID = "sound";
+									createjs.Sound.registerSound(res.path, soundID);
+									$('<button class="btn btn-warning playSound" onclick="createjs.Sound.play(\'' + soundID + '\');">Reply</button>').appendTo($newli);
                                 $('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
                             }
                         });

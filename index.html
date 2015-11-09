@@ -43,7 +43,7 @@
 	}
     .li-send {
         background-color: #009966;
-		width: 750px;
+		width: 650px;
         padding: 10px 20px;
         margin-bottom: 10px;
         border-radius: 5px;
@@ -64,7 +64,7 @@
     .li-reply {
         background-color: #3399cc;
 		text-align: right;
-		width :750px;
+		width :650px;
         padding: 10px 20px;
         margin-bottom: 10px;
         border-radius: 5px;
@@ -151,7 +151,7 @@
             <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a>
             <div class="container chat">
                 <ul id="recordingslist">
-					
+
                 </ul>
 			</div>
 			<!-- /#container -->
@@ -178,9 +178,11 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+	
+	<script src="js/createjs.min.js"></script>
 
 	<script src="recorder.js"></script>
-
+	
 	<script>
 		var $micro = $('#micro');
 		var microStr = $micro.text();
@@ -205,6 +207,15 @@
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
     });
+    </script>
+	
+	<script>
+      var soundID = "Thunder";
+	  
+      function playSound () {
+		createjs.Sound.registerSound("http://localhost:3000/out/audio_recording_1447079646733.wav", soundID);
+        createjs.Sound.play(soundID);
+      }
     </script>
 
 </body>

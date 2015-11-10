@@ -147,7 +147,7 @@ function uploadAudio(wavData, filename, $li){
                                 //$(audio).appendTo($newli);
                                 //$('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
 								//new buzz.sound(window.location.href + res.path).play();
-								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href + res.path + '\').play();">Reply</button>').appendTo($newli);
+								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href.split('/')[0] + res.path + '\').play();">Reply</button>').appendTo($newli);
                                 $('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
                             }
                         });

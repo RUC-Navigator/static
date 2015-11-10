@@ -93,7 +93,7 @@ function stopRecord() {
 	var li = document.createElement('li');
 	//var au = document.createElement('a');
 	var bu = document.createElement('button');
-	var hf = document.createElement('a');
+	//var hf = document.createElement('a');
 
     uploadAudio(blob, filename, $(li));
 
@@ -105,11 +105,11 @@ function stopRecord() {
 		new buzz.sound(window.location.href + 'uploads/' + filename).play();
 	};
 	var soundID = filename;
-	hf.href = url;
-	hf.download = filename;
-	hf.innerHTML = "download wav file";
+	//hf.href = url;
+	//hf.download = filename;
+	//hf.innerHTML = "download wav file";
 	li.appendChild(bu);
-	li.appendChild(hf);
+	//li.appendChild(hf);
 	recordingslist.appendChild(li);
     $(li).addClass('li-send pull-left');
 	li.scrollIntoView();

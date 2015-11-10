@@ -102,7 +102,8 @@ function stopRecord() {
 	bu.className= "btn btn-warning playSound";
 	bu.innerHTML ="playSound";
 	bu.onclick = function() {
-		new buzz.sound(window.location.href + 'uploads/' + filename).play();
+		//new buzz.sound(window.location.href + 'uploads/' + filename).play();
+		new buzz.sound('../uploads/' + filename).play();
 	};
 	var soundID = filename;
 	//hf.href = url;
@@ -128,7 +129,7 @@ function uploadAudio(wavData, filename, $li){
 		fd.append('data', event.target.result);
 		$.ajax({
 			type: 'POST',
-			url: '/postaudio',
+			url: '/src/postaudio',
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -136,7 +137,7 @@ function uploadAudio(wavData, filename, $li){
                 if (res.status === 0) {
                     var id = res.id;
                     var itv = setInterval(function () {
-                        $.get('/getresult?id=' + id, function (res) {
+                        $.get('/src/getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
 								$('<span> ' + res.pre.split('$')[2] + '</span>').appendTo($li);
@@ -147,7 +148,7 @@ function uploadAudio(wavData, filename, $li){
                                 //$(audio).appendTo($newli);
                                 //$('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
 								//new buzz.sound(window.location.href + res.path).play();
-								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href.split('/')[0] + res.path + '\').play();">Reply</button>').appendTo($newli);
+								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'../' + res.path + '\').play();">Reply</button>').appendTo($newli);
                                 $('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
                             }
                         });

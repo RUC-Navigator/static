@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="watson, spoken English">
+
+    <title>口语助手</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Sidebar CSS -->
+    <link href="../css/sidebar.css" rel="stylesheet">
+
+	<link href="../css/justified-nav.css" rel="stylesheet">
+	<link href="../css/sticky-footer.css" rel="stylesheet">
+	
+	<style>
+    #micro {
+        width: 200px;
+    }
+    #micro .speaker {
+        display: none;
+    }
+    #micro.recording{
+        display: none;
+    }
+    #micro.recording .speaker {
+        display: inline-block;
+    }
+	#log {
+		padding-top: 10px;
+	}
+	.chat {
+		padding-bottom: 200px;
+	}
+	.error {
+		color: red;
+	}
+    .li-send {
+        background-color: #009966;
+		width: 650px;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        position: relative;
+        list-style: none;
+    }
+    .li-send:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: -20px;
+        width: 0;
+        height: 0;
+        border: 10px solid #009966;
+        border-color: transparent #009966 transparent transparent;
+    }
+    .li-reply {
+        background-color: #3399cc;
+		text-align: right;
+		width :650px;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        position: relative;
+        list-style: none;
+    }
+    .li-reply:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        right: -20px;
+        width: 0;
+        height: 0;
+        border: 10px solid #3399cc;
+        border-color: transparent transparent transparent #3399cc;
+    }
+    .li-send a, .li-reply a {
+        color: #fff;
+    }
+
+    </style>
+
+</head>
+
+<body>
+
+	<!-- Fixed navbar -->
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">口语助手</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#">Home</a></li>
+					<li><a href="#about">About</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li role="separator" class="divider"></li>
+							<li class="dropdown-header">xxx</li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div>
+    </nav>
+	<!-- /#Fixed navbar -->
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <div class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Title</a>
+                </li>
+                <li>
+                    <a href="#">Content 1</a>
+                </li>
+				<li>
+                    <a href="#">Content 2</a>
+                </li>
+            </div>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+
+            <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a>
+            <div class="container chat">
+                <ul id="recordingslist">
+
+                </ul>
+			</div>
+			<!-- /#container -->
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+
+	<!-- Fixed navbar -->
+	<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">	
+		<div class="micro">
+			<div class="micButton-preload"></div>
+			<div class="micButton" onmousedown="startRecord()" onmouseup="stopRecord()"></div>
+			<div id="log"><p class="txt" id="output">Press to start speaking</p></div>
+		</div>
+	</nav>
+	<!-- /#Fixed navbar -->
+
+    <!-- jQuery -->
+    <script src="../js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+	
+	<script src="../js/buzz.min.js"></script>
+
+	<script src="../js/recorder.js"></script>
+	
+	<script>
+		var $micro = $('#micro');
+		var microStr = $micro.text();
+		var itv;
+		$micro.on('mousedown', function () {
+			startRecord();
+			$micro.addClass('recording');
+			itv = setInterval(function () {
+				$micro.find('.speaker').toggleClass('status-1');
+			}, 500);
+		});
+		$micro.on('mouseup', function () {
+			stopRecord();
+			$micro.removeClass('recording');
+			clearInterval(itv);
+		});
+    </script>
+
+    <!-- Menu Toggle Script -->
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+
+</body>
+
+</html>

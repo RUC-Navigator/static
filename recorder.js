@@ -102,7 +102,7 @@ function stopRecord() {
 	bu.className= "btn btn-warning playSound";
 	bu.innerHTML ="playSound";
 	bu.onclick = function() {
-			createjs.Sound.play('uploads/' + filename);
+			createjs.Sound.play('uploads/case3' + filename);
 		};
 	var soundID = filename;
 	hf.href = url;
@@ -128,7 +128,7 @@ function uploadAudio(wavData, filename, $li){
 		fd.append('data', event.target.result);
 		$.ajax({
 			type: 'POST',
-			url: '/postaudio',
+			url: '/case3_postaudio',
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -136,11 +136,11 @@ function uploadAudio(wavData, filename, $li){
                 if (res.status === 0) {
                     var id = res.id;
                     var itv = setInterval(function () {
-                        $.get('/getresult?id=' + id, function (res) {
+                        $.get('/case3_getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
 								$('<span> ' + res.pre.split('$')[2] + '</span>').appendTo($li);
-								createjs.Sound.registerSound(window.location.href + 'uploads/' + filename, 'uploads/' + filename);
+								createjs.Sound.registerSound(window.location.href + 'uploads/case3/' + filename, 'uploads/case3/' + filename);
                                 var $newli = $('<li class="li-reply pull-right"></li>');
                                 $newli.insertAfter($li);
                                 //var audio = document.createElement("audio");

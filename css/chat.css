@@ -1,20 +1,26 @@
-#micro {
-	width: 200px;
+.micro {
+	width: 100px;
 }
-#micro .speaker {
+.micro .speaker {
 	display: none;
 }
-#micro.recording{
+.micro.recording .txt{
 	display: none;
 }
-#micro.recording .speaker {
+.micro.recording .speaker {
 	display: inline-block;
 }
+.speaker .glyphicon-volume-down {
+	display: none;
+}
+.speaker.status-1 .glyphicon-volume-down {
+	display: inline-block;
+}
+.speaker.status-1 .glyphicon-volume-up {
+	display: none;
+} 
 #log {
 	padding-top: 10px;
-}
-.chat {
-	padding-bottom: 200px;
 }
 .error {
 	color: red;

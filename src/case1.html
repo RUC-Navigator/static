@@ -19,7 +19,6 @@
 	<link href="../css/chat.css" rel="stylesheet">
 
 	<link href="../css/justified-nav.css" rel="stylesheet">
-	<link href="../css/sticky-footer.css" rel="stylesheet">
 	
 
 </head>
@@ -84,8 +83,112 @@
 
             <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a>
             <div class="container chat">
+				<div id="log"><p class="txt" id="output">Press to start speaking</p></div>
                 <ul id="recordingslist">
-
+					<li class="li-send pull-left">
+						<button id='r00' class="micro btn btn-warning" onclick="rec('r00')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>What a lovely day, isn't it?</span>
+					</li>
+					<li class="li-reply pull-right">
+						<button id='r01' class="micro btn btn-warning" onclick="rec('r01')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>Yes,it's nice and bright.</span>
+					</li>
+					
+					<li class="li-send pull-left">
+						<button id='r10' class="micro btn btn-warning" onclick="rec('r10')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>I hope it stays like this.</span>
+					</li>
+					<li class="li-reply pull-right">
+						<button id='r11' class="micro btn btn-warning" onclick="rec('r11')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>I hope so, too.</span>
+					</li>
+					
+					<li class="li-send pull-left">
+						<button id='r20' class="micro btn btn-warning" onclick="rec('r20')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>Is the weather usually like this here?</span>
+					</li>
+					<li class="li-reply pull-right">
+						<button id='r21' class="micro btn btn-warning" onclick="rec('r21')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>It's usually a bit hotter than today.</span>
+					</li>
+					
+					<li class="li-send pull-left">
+						<button id='r30' class="micro btn btn-warning" onclick="rec('r30')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>I wonder what's gonna be like tomorrow.</span>
+					</li>
+					<li class="li-reply pull-right">
+						<button id='r31' class="micro btn btn-warning" onclick="rec('r31')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>Let's hear the weather report later. What's the weather like in your hometown?</span>
+					</li>
+					
+					<li class="li-send pull-left">
+						<button id='r40' class="micro btn btn-warning" onclick="rec('r40')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>Neither too cold nor too hot.</span>
+					</li>
+					<li class="li-reply pull-right">
+						<button id='r41' class="micro btn btn-warning" onclick="rec('r41')">
+							<span class="txt">长按说话</span>
+							<span class="speaker">
+								<i class="glyphicon glyphicon-volume-down"></i>
+								<i class="glyphicon glyphicon-volume-up"></i>
+							</span>
+						</button>
+						<span>That's quite lovely weather.</span>
+					</li>
                 </ul>
 			</div>
 			<!-- /#container -->
@@ -95,17 +198,7 @@
 
     </div>
     <!-- /#wrapper -->
-
-
-	<!-- Fixed navbar -->
-	<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">	
-		<div class="micro">
-			<div class="micButton-preload"></div>
-			<div class="micButton" onmousedown="startRecord()" onmouseup="stopRecord()"></div>
-			<div id="log"><p class="txt" id="output">Press to start speaking</p></div>
-		</div>
-	</nav>
-	<!-- /#Fixed navbar -->
+	
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
@@ -118,29 +211,36 @@
 	<script src="../js/recorder.js"></script>
 	
 	<script>
-		var $micro = $('#micro');
-		var microStr = $micro.text();
-		var itv;
-		$micro.on('mousedown', function () {
-			startRecord();
-			$micro.addClass('recording');
-			itv = setInterval(function () {
-				$micro.find('.speaker').toggleClass('status-1');
-			}, 500);
-		});
-		$micro.on('mouseup', function () {
-			stopRecord();
-			$micro.removeClass('recording');
-			clearInterval(itv);
-		});
+		for (var i=0; i<5; i++) {
+			for (var j=0; j<2; j++) {
+				rec("r" + i + j);
+			}
+		}
+		function rec(id) {
+			var $micro = $('#' + id);
+			var microStr = $micro.text();
+			var itv;
+			$micro.on('mousedown', function () {
+				startRecord();
+				$micro.addClass('recording');
+				itv = setInterval(function () {
+					$micro.find('.speaker').toggleClass('status-1');
+				}, 300);
+			});
+			$micro.on('mouseup', function () {
+				stopRecord();
+				$micro.removeClass('recording');
+				clearInterval(itv);
+			});
+		}
     </script>
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
     </script>
 
 </body>

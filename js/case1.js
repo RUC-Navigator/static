@@ -1,3 +1,26 @@
+for (var i=0; i<5; i++) {
+	for (var j=0; j<2; j++) {
+		rec("r" + i + j);
+	}
+}
+function rec(id) {
+	var $micro = $('#' + id);
+	var microStr = $micro.text();
+	var itv;
+	$micro.on('mousedown', function () {
+		startRecord();
+		$micro.addClass('recording');
+		itv = setInterval(function () {
+			$micro.find('.speaker').toggleClass('status-1');
+		}, 300);
+	});
+	$micro.on('mouseup', function () {
+		stopRecord(id);
+		$micro.removeClass('recording');
+		clearInterval(itv);
+	});
+}
+
 function startRecord() {
     // if micro is pressed, we start recording
     recording = true;
@@ -9,7 +32,7 @@ function startRecord() {
 }
 
 
-function stopRecord() {
+function stopRecord(id) {
     // we stop recording
     recording = false;
 
@@ -63,7 +86,7 @@ function stopRecord() {
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
 
-    uploadAudio(blob, filename);
+    uploadAudio(blob, filename, id);
 
 	outputElement.innerHTML = 'Press to start speaking';
 }
@@ -76,6 +99,7 @@ function uploadAudio(wavData, filename){
 		var wavName = encodeURIComponent(filename);
 
 		fd.append('fname', wavName);
+		fd.append('txtid', id);			//txt filename is  id + ".txt"
 		fd.append('data', event.target.result);
 		$.ajax({
 			type: 'POST',

@@ -211,31 +211,6 @@
 
 	<script src="../js/recorder.js"></script>
 	<script src="../js/case1.js"></script>
-	
-	<script>
-		for (var i=0; i<5; i++) {
-			for (var j=0; j<2; j++) {
-				rec("r" + i + j);
-			}
-		}
-		function rec(id) {
-			var $micro = $('#' + id);
-			var microStr = $micro.text();
-			var itv;
-			$micro.on('mousedown', function () {
-				startRecord();
-				$micro.addClass('recording');
-				itv = setInterval(function () {
-					$micro.find('.speaker').toggleClass('status-1');
-				}, 300);
-			});
-			$micro.on('mouseup', function () {
-				stopRecord();
-				$micro.removeClass('recording');
-				clearInterval(itv);
-			});
-		}
-    </script>
 
     <!-- Menu Toggle Script -->
     <script>

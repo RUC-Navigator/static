@@ -78,7 +78,7 @@ function stopRecord() {
 	bu.innerHTML ="playSound";
 	bu.onclick = function() {
 		//new buzz.sound(window.location.href + 'uploads/' + filename).play();
-		new buzz.sound('../uploads/' + filename).play();
+		new buzz.sound(window.location.href.split('/src')[0] + '/uploads/case3/' + filename).play();
 	};
 	var soundID = filename;
 	//hf.href = url;
@@ -123,11 +123,11 @@ function uploadAudio(wavData, filename, $li){
                                 //$(audio).appendTo($newli);
                                 //$('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
 								//new buzz.sound(window.location.href + res.path).play();
-								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'../' + res.path + '\').play();">Reply</button>').appendTo($newli);
+								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href.split('/src')[0] + res.path + '\').play();">Reply</button>').appendTo($newli);
                                 $('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
                             }
                         });
-                    }, 1000);
+                    }, 500);
                 }
             },
             error: function () {

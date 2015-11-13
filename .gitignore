@@ -1,4 +1,8 @@
 /out/*.wav
 /out/*.txt
 /out/*.wav_transcription
+/out/case3/*.wav
+/out/case3/*.txt
+/out/case3/*.wav_transcription
 /uploads/*.wav
+/uploads/case3/*.wav

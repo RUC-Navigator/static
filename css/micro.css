@@ -1,0 +1,21 @@
+.micro {
+	width: 100px;
+}
+.micro .speaker {
+	display: none;
+}
+.micro.recording .txt{
+	display: none;
+}
+.micro.recording .speaker {
+	display: inline-block;
+}
+.speaker .glyphicon-volume-down {
+	display: none;
+}
+.speaker.status-1 .glyphicon-volume-down {
+	display: inline-block;
+}
+.speaker.status-1 .glyphicon-volume-up {
+	display: none;
+} 

@@ -92,14 +92,15 @@ function stopRecord(id) {
 }
 
 
-function uploadAudio(wavData, filename){
+function uploadAudio(wavData, filename, id){
 	var reader = new FileReader();
 	reader.onload = function(event){
 		var fd = new FormData();
 		var wavName = encodeURIComponent(filename);
 
+		//alert(document.getElementById("st" + id).innerHTML);
 		fd.append('fname', wavName);
-		fd.append('txtid', id);			//txt filename is  id + ".txt"
+		fd.append('txt', document.getElementById("st" + id).innerHTML);
 		fd.append('data', event.target.result);
 		$.ajax({
 			type: 'POST',

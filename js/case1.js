@@ -87,20 +87,26 @@ function stopRecord(id) {
 
 
     uploadAudio(blob, filename, id);
+	
+	var bu = document.getElementById("b" + id);
+	bu.style.visibility='visible';
+	bu.onclick = function() {
+		//new buzz.sound(window.location.href + 'uploads/' + filename).play();
+		new buzz.sound(window.location.href.split('/src')[0] + '/uploads/case1/' + filename).play();
+	};
 
 	outputElement.innerHTML = 'Press to start speaking';
 }
 
 
-function uploadAudio(wavData, filename, id){
+function uploadAudio(wavData, filename, tid){
 	var reader = new FileReader();
 	reader.onload = function(event){
 		var fd = new FormData();
 		var wavName = encodeURIComponent(filename);
 
-		//alert(document.getElementById("st" + id).innerHTML);
 		fd.append('fname', wavName);
-		fd.append('txt', document.getElementById("st" + id).innerHTML);
+		fd.append('txt', document.getElementById("st" + tid).innerHTML);
 		fd.append('data', event.target.result);
 		$.ajax({
 			type: 'POST',
@@ -115,7 +121,17 @@ function uploadAudio(wavData, filename, id){
                         $.get('/src/1_getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
-
+							//	var str = res.txt;
+								var str = "word0@http://www.baidu.com$word1@http://www.baidu.com$word2@http://www.baidu.com";
+								
+								var para = "";
+								var words = str.split('$');
+								for (var i in words) {
+									para += "<span>" + words[i].split('@')[0] + "&nbsp;</span>" + 
+											"<a href=\"" + words[i].split('@')[1] + "\" target=\"_blank\">dict</a><br />";
+								}
+								document.getElementById('p' + tid).innerHTML = para;
+								
                             }
                         });
                     }, 1000);

@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="watson, spoken English">
 
-    <title>口语助手</title>
+    <title>Watson 英语口语助手 - 情景对话</title>
+	<link rel="icon" href="../images/favor.ico" title="spoken english assistant">
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -17,10 +18,10 @@
     <link href="../css/sidebar.css" rel="stylesheet">
 	
 	<link href="../css/chat.css" rel="stylesheet">
+	<link href="../css/micro.css" rel="stylesheet">
 
 	<link href="../css/justified-nav.css" rel="stylesheet">
-	<link href="../css/sticky-footer.css" rel="stylesheet">
-
+	
 
 </head>
 
@@ -36,30 +37,42 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">口语助手</a>
+				<a class="navbar-brand" href="../index.html"><span><img src="../images/favor.ico" height="20"> </img></span>英语口语助手</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">xxx</li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</li>
+					<li><a href="../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页</a></li>
+					<li><a href="case1.html">朗读对话</a></li>
+					<li class="active"><a href="case2.html">场景对话</a></li>
+					<li><a href="case3.html">自由对话</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
+					<li><a role="button" data-toggle="modal" data-target="#AboutModal">关于 </a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
     </nav>
-	<!-- /#Fixed navbar -->
+	<!-- /#Fixed navbar 
+	
+	<!-- About Modal -->
+	<div class="modal fade" id="AboutModal" tabindex="-1" role="dialog" aria-labelledby="AboutModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="AboutModalLabel">About us</h4>
+				</div>
+				<div class="modal-body">
+					<p><b>Spoken English Assistant</b></p>
+					<p>Project for <i>Spoken English Assistant</i> @ RUC-Navigator</p>
+					<p>Project: <a href="https://github.com/RUC-Navigator" target="_blank">Source Code</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div id="wrapper">
 
@@ -82,11 +95,321 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
 
-            <a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a>
+            <!-- a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a -->
+			<div id="log"><p class="txt" id="output" style="visibility:hidden">Press to start speaking</p></div>
             <div class="container chat">
-                <ul id="recordingslist">
-
-                </ul>
+				<ol>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/favor.ico" width="60" height="60" alt="assistant">
+							<h4>English Assistant</h4>
+					    </div>
+						<blockquote>
+							<p>Please input a situation you want to practice
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Weather" readonly="readonly">
+								<span class="input-group-btn"><button class="btn btn-info" type="button" onclick='document.getElementById("recordingslist").style.visibility="visible"'>Start !</button></span>
+							</div>
+							and start to read the converstation ! </p>
+						</blockquote>
+					</li>
+				</ol>
+                <ol id="recordingslist" style="visibility:hidden">		
+					<li class="comment-left">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r00' class="micro btn btn-warning" onclick="rec('r00')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str00">What a lovely day, isn't it?</span>
+								<button id="dr00" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr00" aria-expanded="false" aria-controls="cr00">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br00" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr00">
+									<div class="well">
+										<p id="pr00">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r01' class="micro btn btn-warning" onclick="rec('r01')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str01">Yes,it's nice and bright.</span>
+								<button id="dr01" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr01" aria-expanded="false" aria-controls="cr01">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br01" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr01">
+									<div class="well">
+										<p id="pr01">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					
+					<li class="comment-left">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r10' class="micro btn btn-warning" onclick="rec('r10')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str10">I hope it stays like this.</span>
+								<button id="dr10" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr10" aria-expanded="false" aria-controls="cr10">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br10" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr10">
+									<div class="well">
+										<p id="pr10">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r11' class="micro btn btn-warning" onclick="rec('r11')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str11">I hope so, too.</span>
+								<button id="dr11" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr11" aria-expanded="false" aria-controls="cr11">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br11" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr11">
+									<div class="well">
+										<p id="pr11">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					
+					<li class="comment-left">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r20' class="micro btn btn-warning" onclick="rec('r20')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str20">Is the weather usually like this here?</span>
+								<button id="dr20" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr20" aria-expanded="false" aria-controls="cr20">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br20" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr20">
+									<div class="well">
+										<p id="pr20">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r21' class="micro btn btn-warning" onclick="rec('r21')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str21">It's usually a bit hotter than today.</span>
+								<button id="dr21" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr21" aria-expanded="false" aria-controls="cr21">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br21" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr21">
+									<div class="well">
+										<p id="pr21">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					
+					<li class="comment-left">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r30' class="micro btn btn-warning" onclick="rec('r30')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str30">I wonder what's gonna be like tomorrow.</span>
+								<button id="dr30" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr30" aria-expanded="false" aria-controls="cr30">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br30" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr30">
+									<div class="well">
+										<p id="pr30">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r31' class="micro btn btn-warning" onclick="rec('r31')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str31">Let's hear the weather report later. What's the weather like in your hometown?</span>
+								<button id="dr31" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr31" aria-expanded="false" aria-controls="cr31">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br31" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr31">
+									<div class="well">
+										<p id="pr31">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					
+					<li class="comment-left">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r40' class="micro btn btn-warning" onclick="rec('r40')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str40">Neither too cold nor too hot.</span>
+								<button id="dr40" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr40" aria-expanded="false" aria-controls="cr40">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br40" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr40">
+									<div class="well">
+										<p id="pr40">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+					<li class="comment-right">
+						<div class="comment-meta">
+							<img src="../images/learner.png" width="60" height="60" alt="learner">
+							<h4>English Learner</h4>
+					    </div>
+						<blockquote>
+							<p>
+								<button id='r41' class="micro btn btn-warning" onclick="rec('r41')">
+									<span class="txt">Press speak</span>
+									<span class="speaker">
+										<i class="glyphicon glyphicon-volume-down"></i>
+										<i class="glyphicon glyphicon-volume-up"></i>
+									</span>
+								</button>&nbsp;&nbsp;
+								<span id="str41">That's quite lovely weather.</span>
+								<button id="dr41" class="btn btn-danger btn-sm pull-right" disabled="disabled" style="visibility:hidden" data-toggle="collapse" data-target="#cr41" aria-expanded="false" aria-controls="cr41">
+									<img src="../images/errword.png" width="18"></img>&nbsp;&nbsp;ERR WORDS
+								</button><span class="pull-right">&nbsp;&nbsp;</span>
+								<button id="br41" class="btn btn-success btn-sm pull-right" style="visibility:hidden">
+									<img src="../images/play.png" width="18"></img>&nbsp;&nbsp;HEAR
+								</button><span class="pull-right">
+								<div class="collapse" id="cr41">
+									<div class="well">
+										<p id="pr41">Please wait for a while ... </p>
+									</div>
+								</div>
+							</p>
+						</blockquote>
+					</li>
+                </ol>
 			</div>
 			<!-- /#container -->
 
@@ -95,17 +418,7 @@
 
     </div>
     <!-- /#wrapper -->
-
-
-	<!-- Fixed navbar -->
-	<nav id="footer" class="navbar navbar-default navbar-fixed-bottom">	
-		<div class="micro">
-			<div class="micButton-preload"></div>
-			<div class="micButton" onmousedown="startRecord()" onmouseup="stopRecord()"></div>
-			<div id="log"><p class="txt" id="output">Press to start speaking</p></div>
-		</div>
-	</nav>
-	<!-- /#Fixed navbar -->
+	
 
     <!-- jQuery -->
     <script src="../js/jquery.min.js"></script>
@@ -116,31 +429,14 @@
 	<script src="../js/buzz.min.js"></script>
 
 	<script src="../js/recorder.js"></script>
-	
-	<script>
-		var $micro = $('#micro');
-		var microStr = $micro.text();
-		var itv;
-		$micro.on('mousedown', function () {
-			startRecord();
-			$micro.addClass('recording');
-			itv = setInterval(function () {
-				$micro.find('.speaker').toggleClass('status-1');
-			}, 500);
-		});
-		$micro.on('mouseup', function () {
-			stopRecord();
-			$micro.removeClass('recording');
-			clearInterval(itv);
-		});
-    </script>
+	<script src="../js/case1.js"></script>
 
     <!-- Menu Toggle Script -->
     <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+		$("#menu-toggle").click(function(e) {
+			e.preventDefault();
+			$("#wrapper").toggleClass("toggled");
+		});
     </script>
 
 </body>

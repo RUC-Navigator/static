@@ -64,37 +64,33 @@ function stopRecord() {
     // outputElement.innerHTML = 'Handing off the file now...';
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
 
-
 	var li = document.createElement('li');
-	//var au = document.createElement('a');
-	var bu = document.createElement('button');
-	//var hf = document.createElement('a');
+	var div = document.createElement('div');
+	var bq = document.createElement('blockquote');
+	var p = document.createElement('p');
 
-    uploadAudio(blob, filename, $(li));
+    uploadAudio(blob, filename, $(li), p);
+	
+	div.innerHTML = "<img src=\"../images/learner.png\" width=\"60\" height=\"60\" alt=\"learner\">" +
+					"<h4>English Learner</h4><span>February 28, 2010</span>";
 
-	//au.controls = true;
-	//au.src = url;
-	bu.className= "btn btn-warning playSound";
-	bu.innerHTML ="playSound";
-	bu.onclick = function() {
-		//new buzz.sound(window.location.href + 'uploads/' + filename).play();
-		new buzz.sound(window.location.href.split('/src')[0] + '/uploads/case3/' + filename).play();
-	};
-	var soundID = filename;
-	//hf.href = url;
-	//hf.download = filename;
-	//hf.innerHTML = "download wav file";
-	li.appendChild(bu);
-	//li.appendChild(hf);
+	p.innerHTML= "&nbsp;<button class=\"btn btn-success btn-sm\" onclick=\"new buzz.sound(\'" + 
+				 window.location.href.split('/src')[0] + '/uploads/case3/' + filename + "\').play()\">" +
+				 "<img src=\"../images/play.png\" width=\"18\"></img>&nbsp;&nbsp;HEAR</button>"
+
+	bq.appendChild(p);
+	$(div).addClass('comment-meta');
+	li.appendChild(div);
+	li.appendChild(bq);
+    $(li).addClass('comment-left');
 	recordingslist.appendChild(li);
-    $(li).addClass('li-send pull-left');
 	li.scrollIntoView();
 	
 	outputElement.innerHTML = 'Press to start speaking';
 }
 
 
-function uploadAudio(wavData, filename, $li){
+function uploadAudio(wavData, filename, $li, p){
 	var reader = new FileReader();
 	reader.onload = function(event){
 		var fd = new FormData();
@@ -115,16 +111,23 @@ function uploadAudio(wavData, filename, $li){
                         $.get('/src/3_getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
-								$('<span> ' + res.pre.split('$')[2] + '</span>').appendTo($li);
-                                var $newli = $('<li class="li-reply pull-right"></li>');
+								//$('<span> ' + res.pre.split('$')[2] + '</span>').appendTo($p);
+								p.innerHTML = res.pre.split('$')[2] + p.innerHTML;
+                                var $newli = $('<li class="comment-right"><div class="comment-meta">' + 
+											   '<img src="../images/favor.ico" width="60" height="60" alt="assistant">' + 
+											   '<h4>English Assistant</h4><span>March 1, 2010</span></div>' +
+											   '<blockquote><p>' + res.txt + '&nbsp;<button class=\"btn btn-success btn-sm\" onclick=\"new buzz.sound(\'' +
+											   window.location.href.split('/src')[0] + res.path + '\').play();">' + 
+											   '<img src=\"../images/play.png\" width=\"18\"></img>&nbsp;&nbsp;HEAR</button>' +
+											   '</p></blockquote></li>');
                                 $newli.insertAfter($li);
                                 //var audio = document.createElement("audio");
                                 //audio.src = res.path;
                                 //$(audio).appendTo($newli);
                                 //$('<a href="' + res.path + '" target="_blank">下载文件</a>').appendTo($newli);
 								//new buzz.sound(window.location.href + res.path).play();
-								$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href.split('/src')[0] + res.path + '\').play();">Reply</button>').appendTo($newli);
-                                $('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
+								//$('<button class="btn btn-warning playSound" onclick="new buzz.sound(\'' + window.location.href.split('/src')[0] + res.path + '\').play();">Reply</button>').appendTo($newli);
+                                //$('<span></span>').addClass('txt').text(res.txt).appendTo($newli);
                             }
                         });
                     }, 500);

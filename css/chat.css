@@ -1,50 +1,127 @@
-#log {
-	padding-top: 10px;
+body {
+	background: url(../images/background.gif);
 }
-.error {
-	color: red;
-}
-.li-send {
-	background-color: #009966;
-	width: 650px;
-	padding: 10px 20px;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	position: relative;
+ol {
+	margin: 0;
+	padding: 0;
 	list-style: none;
 }
-.li-send:before {
-	content: "";
+.comment-left {
+	float: left; /* float containment */
+	width: 75%;
+	margin: 0 0 20px 0;
+}
+.comment-right {
+	float: right; /* float containment */
+	width: 75%;
+	margin: 0 0 20px 0;
+}
+.comment-left .comment-meta {
+	float: left;
+	width: 100px;
+	font-size: 84%;
+	text-align: right;
+	text-shadow: 1px 1px 0 hsla(0,0%,100%,.7);
+}
+.comment-right .comment-meta {
+	float: right;
+	width: 100px;
+	font-size: 84%;
+	text-align: left;
+	text-shadow: -1px 1px 0 hsla(0,0%,100%,.7);
+}
+h4 {
+	margin: 0;
+	font-size: 100%;
+	font-weight: normal;
+	line-height: 1;
+}
+.comment-meta span {
+	font-size: 84%;
+	color: #666;
+}
+blockquote p {
+	margin: 0;
+	padding: 0 0 10px 0;
+}
+.comment-left blockquote {
+	position: relative;
+	min-height: 51px;
+	margin: 0 0 0 112px;
+	padding: 10px 15px 5px 15px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border-top: 1px solid #fff;
+	background-color: hsla(182,44%,76%,.5);
+	background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0) 30px);
+	background-image: -webkit-gradient(linear, 0 0, 0 30, from(hsla(0,0%,100%,.6)), to(hsla(0,0%,100%,0)));
+	-moz-box-shadow: 1px 1px 2px hsla(0,0%,0%,.3);
+	-webkit-box-shadow: 1px 1px 2px hsla(0,0%,0%,.3);
+	box-shadow: 1px 1px 2px hsla(0,0%,0%,.3);
+	word-wrap: break-word;
+}
+.comment-right blockquote {
+	position: relative;
+	min-height: 51px;
+	margin: 0 112px 0 0;
+	padding: 10px 15px 5px 15px;
+	-moz-border-radius: 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 20px;
+	border-top: 1px solid #fff;
+	background-color: hsla(22,44%,76%,.5);
+	background-image: -moz-linear-gradient(hsla(0,0%,100%,.6), hsla(0,0%,100%,0) 30px);
+	background-image: -webkit-gradient(linear, 0 0, 0 30, from(hsla(0,0%,100%,.6)), to(hsla(0,0%,100%,0)));
+	-moz-box-shadow: -1px 1px 2px hsla(0,0%,0%,.3);
+	-webkit-box-shadow: -1px 1px 2px hsla(0,0%,0%,.3);
+	box-shadow: -1px 1px 2px hsla(0,0%,0%,.3);
+	word-wrap: break-word;
+}
+.comment-left blockquote:after {
+	content: "\00a0";
 	display: block;
 	position: absolute;
-	top: 10px;
+	top: 20px;
 	left: -20px;
 	width: 0;
 	height: 0;
-	border: 10px solid #009966;
-	border-color: transparent #009966 transparent transparent;
+	border-width: 10px 20px 10px 0;
+	border-style: solid;
+	border-color: transparent hsla(182,44%,76%,.5) transparent transparent;
 }
-.li-reply {
-	background-color: #3399cc;
-	text-align: right;
-	width :650px;
-	padding: 10px 20px;
-	margin-bottom: 10px;
-	border-radius: 5px;
-	position: relative;
-	list-style: none;
-}
-.li-reply:after {
-	content: "";
+.comment-right blockquote:after {
+	content: "\00a0";
 	display: block;
 	position: absolute;
-	top: 10px;
+	top: 20px;
 	right: -20px;
 	width: 0;
 	height: 0;
-	border: 10px solid #3399cc;
-	border-color: transparent transparent transparent #3399cc;
+	border-width: 10px 0 10px 20px;
+	border-style: solid;
+	border-color: transparent transparent transparent hsla(22,44%,76%,.5);
 }
-.li-send a, .li-reply a {
-	color: #fff;
+.comment-left blockquote:hover {
+	top: -2px;
+	left: -2px;
+	-moz-box-shadow: 3px 3px 2px hsla(0,0%,0%,.3);
+	-webkit-box-shadow: 3px 3px 2px hsla(0,0%,0%,.3);
+	box-shadow: 3px 3px 2px hsla(0,0%,0%,.3);
+	text-shadow: 1px 1px 1px hsla(0,0%,100%,.7);
+}
+.comment-right blockquote:hover {
+	top: -2px;
+	right: -2px;
+	-moz-box-shadow: -3px 3px 2px hsla(0,0%,0%,.3);
+	-webkit-box-shadow: -3px 3px 2px hsla(0,0%,0%,.3);
+	box-shadow: -3px 3px 2px hsla(0,0%,0%,.3);
+	text-shadow: -1px 1px 1px hsla(0,0%,100%,.7);
+}
+
+.error {
+	color: red;
+}
+#log {
+	padding-top: 10px;
 }

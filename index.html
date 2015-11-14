@@ -8,19 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="watson, spoken English">
 
-    <title>口语助手</title>
+    <title>Watson 英语口语助手</title>
+	<link rel="icon" href="images/favor.ico" title="spoken english assistant">
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Sidebar CSS -->
-    <link href="css/sidebar.css" rel="stylesheet">
 	
 	<link href="css/justified-nav.css" rel="stylesheet">
 	
 </head>
 
 <body>
+	<a href="https://github.com/RUC-Navigator" target="_blank"><img style="position: absolute; top: 50px; right: 0; border: 0;" src="images/forkmeongithub.png" alt="Fork me on GitHub"></a>
 
 	<!-- Fixed navbar -->
     <nav class="navbar navbar-fixed-top navbar-inverse">
@@ -32,87 +31,90 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">口语助手</a>
+				<a class="navbar-brand" href="#"><span><img src="images/favor.ico" height="20"> </img></span>英语口语助手</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">xxx</li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</li>
+					<li class="active"><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页</a></li>
+					<li><a href="src/case1.html">朗读对话</a></li>
+					<li><a href="src/case2.html">场景对话</a></li>
+					<li><a href="src/case3.html">自由对话</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
+					<li><a role="button" data-toggle="modal" data-target="#AboutModal">关于 </a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
     </nav>
-	<!-- /#Fixed navbar -->
+	<!-- /#Fixed navbar 
+	
+	<!-- About Modal -->
+	<div class="modal fade" id="AboutModal" tabindex="-1" role="dialog" aria-labelledby="AboutModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="AboutModalLabel">About us</h4>
+				</div>
+				<div class="modal-body">
+					<p><b>Spoken English Assistant</b></p>
+					<p>Project for <i>Spoken English Assistant</i> @ RUC-Navigator</p>
+					<p>Project: <a href="https://github.com/RUC-Navigator" target="_blank">Source Code</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div id="wrapper">
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <div class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">Title</a>
-                </li>
-                <li>
-                    <a href="#">Content 1</a>
-                </li>
-				<li>
-                    <a href="#">Content 2</a>
-                </li>
-            </div>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
         <!-- Page Content -->
-        <div id="page-content-wrapper">
-			
+        <div id="page-content-wrapper">			
 		
 			<div class="container">
 				<!-- Jumbotron -->
 				<div class="jumbotron">
-					<h1>口语助手</h1>
-					<p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-					<p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
+					<br>
+					<h1>英语口语助手</h1>
+					<br>
+					<h4 class="lead">IBM Watson提供了认知计算的能力，通过使用Watson API，处理、理解非结构化数据，我们可以构建
+					出能与人通过自然语言、语音等方式自由交流的平台。作为英语母语者的Watson就可以扮演口语学习中的最佳拍档。</h4>
+					<br>
+					<p><a class="btn btn-lg btn-success" href="#case" role="button">Get started !</a></p>
 				</div>
 
 				<!-- Example row of columns -->
-				<div class="row">
+				<div id="case" class="row">
 					<div class="col-lg-4">
-						<h2>case 1</h2>
-						<p class="text-danger">As of v8.0, Safari exhibits a bug in which resizing your browser horizontally causes rendering errors in the justified nav that are cleared upon refreshing.</p>
-						<p><a class="btn btn-primary" href="src/case1.html" role="button">case1 &raquo;</a></p>
+						<h2>朗读对话</h2>
+						<br>
+						<p>对于给定的一段对话内容，用户可以对每一句话进行录音，系统给出对于这一句话的录音
+						的反馈评价，帮助用户更正口语中的发音错误，从而提高口语水平。</p>
+						<br>
+						<p><a class="btn btn-primary" href="src/case1.html" role="button">朗读对话 &raquo;</a></p>
 					</div>
 					<div class="col-lg-4">
-						<h2>case2</h2>
-						<p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-						<p><a class="btn btn-primary" href="src/case2.html" role="button">case2 &raquo;</a></p>
+						<h2>场景对话</h2>
+						<br>
+						<p>以用户输入的任意关键词为主题，机器自动生成一段对话脚本，供用户模拟该场景中的对
+						话内容并且进行口语练习。</p>
+						<br>
+						<p><a class="btn btn-primary" href="src/case2.html" role="button">场景对话 &raquo;</a></p>
 					</div>
 					<div class="col-lg-4">
-						<h2>Heading</h2>
-						<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa.</p>
-						<p><a class="btn btn-primary" href="src/case3.html" role="button">case3 &raquo;</a></p>
-					</div>
-					<div class="col-lg-4">
-						<p> <code>#page-content-wrapper</code>.</p>
-						<a href="#menu-toggle" class="btn btn-warning" id="menu-toggle">Toggle</a>
+						<h2>自由对话</h2>
+						<p>口语助手和用户进行关于任意主题的英语自由对话交流，及时对用户表达进行反馈，提高
+						用户英语口语水平;为用户提供更地道的语言表达，为用户纠正错误的英语发音。此外对用户
+						整体的口语能力进行评测和反馈，提供学习建议。</p>
+						<p><a class="btn btn-primary" href="src/case3.html" role="button">自由对话 &raquo;</a></p>
 					</div>
 				</div>
 
 				<!-- Site footer -->
 				<footer class="footer">
-					<p>&copy; xxxxxx 2015</p>
+					<p>&copy; RUC Navigator 2015</p>
 				</footer>
 
 			</div> 
@@ -130,12 +132,6 @@
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
 
-    <!-- Menu Toggle Script -->
-    <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
     </script>
 
 </body>

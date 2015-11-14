@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="watson, spoken English">
 
-    <title>口语助手</title>
+    <title>Watson 英语口语助手 - 朗读对话</title>
+	<link rel="icon" href="../images/favor.ico" title="spoken english assistant">
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -36,30 +37,42 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">口语助手</a>
+				<a class="navbar-brand" href="../index.html"><span><img src="../images/favor.ico" height="20"> </img></span>英语口语助手</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#contact">Contact</a></li>
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><a href="#">Action</a></li>
-							<li role="separator" class="divider"></li>
-							<li class="dropdown-header">xxx</li>
-							<li><a href="#">Separated link</a></li>
-						</ul>
-					</li>
+					<li><a href="../index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> 主页</a></li>
+					<li class="active"><a href="#">朗读对话</a></li>
+					<li><a href="case2.html">场景对话</a></li>
+					<li><a href="case3.html">自由对话</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
+					<li><a role="button" data-toggle="modal" data-target="#AboutModal">关于 </a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
     </nav>
-	<!-- /#Fixed navbar -->
+	<!-- /#Fixed navbar 
+	
+	<!-- About Modal -->
+	<div class="modal fade" id="AboutModal" tabindex="-1" role="dialog" aria-labelledby="AboutModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="AboutModalLabel">About us</h4>
+				</div>
+				<div class="modal-body">
+					<p><b>Spoken English Assistant</b></p>
+					<p>Project for <i>Spoken English Assistant</i> @ RUC-Navigator</p>
+					<p>Project: <a href="https://github.com/RUC-Navigator" target="_blank">Source Code</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
     <div id="wrapper">
 

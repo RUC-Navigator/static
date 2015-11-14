@@ -12,7 +12,7 @@ function rec(id) {
 		$micro.addClass('recording');
 		itv = setInterval(function () {
 			$micro.find('.speaker').toggleClass('status-1');
-		}, 300);
+		}, 500);
 	});
 	$micro.on('mouseup', function () {
 		stopRecord(id);
@@ -84,12 +84,14 @@ function stopRecord(id) {
     // let's save it locally
     // outputElement.innerHTML = 'Handing off the file now...';
     var url = (window.URL || window.webkitURL).createObjectURL(blob);
-
-
-    uploadAudio(blob, filename, id);
 	
 	var bu = document.getElementById("b" + id);
+	var du = document.getElementById("d" + id);
+	
+	uploadAudio(blob, filename, id);
+	
 	bu.style.visibility='visible';
+	du.style.visibility='visible';
 	bu.onclick = function() {
 		//new buzz.sound(window.location.href + 'uploads/' + filename).play();
 		new buzz.sound(window.location.href.split('/src')[0] + '/uploads/case1/' + filename).play();
@@ -121,6 +123,7 @@ function uploadAudio(wavData, filename, tid){
                         $.get('/src/1_getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
+								document.getElementById('d' + tid).disabled="";
 							//	var str = res.txt;							
 								var para = "";
 								var words = res.txt.split('$');
@@ -128,7 +131,8 @@ function uploadAudio(wavData, filename, tid){
 									para += "<span>" + words[i].split('@')[0] + "&nbsp;</span>" + 
 											"<a href=\"" + words[i].split('@')[1] + "\" target=\"_blank\">dict</a><br />";
 								}
-								document.getElementById('p' + tid).innerHTML = para;								
+								document.getElementById('p' + tid).innerHTML = para;
+								$('#c' + tid).collapse('show');
                             }
                         });
                     }, 200);

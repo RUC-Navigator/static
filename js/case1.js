@@ -121,20 +121,17 @@ function uploadAudio(wavData, filename, tid){
                         $.get('/src/1_getresult?id=' + id, function (res) {
                             if (res.status === 0) {
                                 clearInterval(itv);
-							//	var str = res.txt;
-								var str = "word0@http://www.baidu.com$word1@http://www.baidu.com$word2@http://www.baidu.com";
-								
+							//	var str = res.txt;							
 								var para = "";
-								var words = str.split('$');
+								var words = res.txt.split('$');
 								for (var i in words) {
 									para += "<span>" + words[i].split('@')[0] + "&nbsp;</span>" + 
 											"<a href=\"" + words[i].split('@')[1] + "\" target=\"_blank\">dict</a><br />";
 								}
-								document.getElementById('p' + tid).innerHTML = para;
-								
+								document.getElementById('p' + tid).innerHTML = para;								
                             }
                         });
-                    }, 1000);
+                    }, 200);
                 }
             },
             error: function () {

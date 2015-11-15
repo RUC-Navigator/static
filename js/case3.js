@@ -1,3 +1,5 @@
+var date = new Date();
+
 function startRecord() {
     // if micro is pressed, we start recording
     recording = true;
@@ -72,7 +74,7 @@ function stopRecord() {
     uploadAudio(blob, filename, $(li), p);
 	
 	div.innerHTML = "<img src=\"../images/learner.png\" width=\"60\" height=\"60\" alt=\"learner\">" +
-					"<h4>English Learner</h4><span>February 28, 2010</span>";
+					"<h4>English Learner</h4><span>" + date.toLocaleDateString() + "</span>";
 
 	p.innerHTML= "&nbsp;<button class=\"btn btn-success btn-sm\" onclick=\"new buzz.sound(\'" + 
 				 window.location.href.split('/src')[0] + '/uploads/case3/' + filename + "\').play()\">" +
@@ -115,7 +117,7 @@ function uploadAudio(wavData, filename, $li, p){
 								p.innerHTML = res.pre.split('$')[2] + p.innerHTML;
                                 var $newli = $('<li class="comment-right"><div class="comment-meta">' + 
 											   '<img src="../images/favor.ico" width="60" height="60" alt="assistant">' + 
-											   '<h4>English Assistant</h4><span>March 1, 2010</span></div>' +
+											   '<h4>English Assistant</h4><span>' + date.toLocaleDateString() + '</span></div>' +
 											   '<blockquote><p>' + res.txt + '&nbsp;<button class=\"btn btn-success btn-sm\" onclick=\"new buzz.sound(\'' +
 											   window.location.href.split('/src')[0] + res.path + '\').play();">' + 
 											   '<img src=\"../images/play.png\" width=\"18\"></img>&nbsp;&nbsp;HEAR</button>' +

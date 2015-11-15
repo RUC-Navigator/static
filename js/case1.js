@@ -124,20 +124,24 @@ function uploadAudio(wavData, filename, tid){
                             if (res.status === 0) {
                                 clearInterval(itv);
 								document.getElementById('d' + tid).disabled="";
-							//	var str = res.txt;							
-								var para = "<table class=\"table table-striped\"><thead><tr>" +
-										   "<th>#</th><th>Word</th><th>Find it in the dictionary</th></tr></thead><tbody>";
+							//	var str = res.txt;
 								var words = res.txt.split('$');
-								var j = 0;
-								for (var i in words) {
-									j ++;
-									para += "<tr><th scope=\"row\">" + j + "</th>" +
-											"<td>" + words[i].split('@')[0] + "</td>" + 
-											"<td><a href=\"" + words[i].split('@')[1] + "\" target=\"_blank\">" +
-											"\"" + words[i].split('@')[0] + "\" in the dict</a></td></tr>";
+								if (words[0]) {
+									var para = "The error words you read : <table class=\"table table-striped\"><thead><tr>" +
+											   "<th>#</th><th>Word</th><th>Find it in the dictionary</th></tr></thead><tbody>";
+									var j = 0;
+									for (var i in words) {
+										j ++;
+										para += "<tr><th scope=\"row\">" + j + "</th>" +
+												"<td>" + words[i].split('@')[0] + "</td>" + 
+												"<td><a href=\"" + words[i].split('@')[1] + "\" target=\"_blank\">" +
+												"\"" + words[i].split('@')[0] + "\" in the dict</a></td></tr>";
+									}
+									para += "</tbody></table>";
+									document.getElementById('p' + tid).innerHTML = para;
+								} else {
+									document.getElementById('p' + tid).innerHTML = "Congratulation! No error word."
 								}
-								para += "</tbody></table>";
-								document.getElementById('p' + tid).innerHTML += para;
 								$('#c' + tid).collapse('show');
                             }
                         });

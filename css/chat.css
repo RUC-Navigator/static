@@ -125,3 +125,7 @@ blockquote p {
 #log {
 	padding-top: 10px;
 }
+#load {
+	text-align: center;
+	visibility: hidden;
+}

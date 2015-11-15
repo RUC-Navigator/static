@@ -1,4 +1,5 @@
 var date = new Date();
+var load = document.getElementById("load");
 
 function startRecord() {
     // if micro is pressed, we start recording
@@ -86,7 +87,8 @@ function stopRecord() {
 	li.appendChild(bq);
     $(li).addClass('comment-left');
 	recordingslist.appendChild(li);
-	li.scrollIntoView();
+	setTimeout("load.style.visibility='visible'", 500);
+	load.scrollIntoView();
 	
 	outputElement.innerHTML = 'Press to start speaking';
 }
@@ -122,6 +124,7 @@ function uploadAudio(wavData, filename, $li, p){
 											   window.location.href.split('/src')[0] + res.path + '\').play();">' + 
 											   '<img src=\"../images/play.png\" width=\"18\"></img>&nbsp;&nbsp;HEAR</button>' +
 											   '</p></blockquote></li>');
+								load.style.visibility='hidden';
                                 $newli.insertAfter($li);
                                 //var audio = document.createElement("audio");
                                 //audio.src = res.path;
